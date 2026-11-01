@@ -67,3 +67,7 @@ vcpkg_installed/
 Testing/
 .cache/
 build/
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
