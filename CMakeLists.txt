@@ -4,7 +4,7 @@ project(kv_server LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(kv_core src/storage.cpp)
+add_library(kv_core src/storage.cpp src/command.cpp)
 target_include_directories(kv_core PUBLIC src)
 
 add_executable(kv_server src/main.cpp)
@@ -18,7 +18,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-add_executable(storage_test tests/storage_test.cpp tests/smoke_test.cpp)
+add_executable(storage_test tests/storage_test.cpp tests/smoke_test.cpp tests/command_test.cpp)
 target_link_libraries(storage_test PRIVATE kv_core GTest::gtest_main)
 
 include(GoogleTest)
